@@ -23,8 +23,8 @@ namespace Curves
         public void ConstructHilbertCurve()
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("X", "-YF+XFX+FY-");
             d.Add("Y", "+XF-YFY-FX+");
+            d.Add("X", "-YF+XFX+FY-");
             LSystem l = new LSystem("X", steps, 90, d);
             string rules = l.BuildStringWithRules(0,"X");
             l.DrawGraphicsFromRule(p, size,rules);

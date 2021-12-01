@@ -30,7 +30,7 @@ namespace Curves
 
         public string BuildStringWithRules(int counter,string rule)
         {
-            string newStringRule = "";
+            
             if (counter == step)
             {
                 
@@ -38,14 +38,21 @@ namespace Curves
             }
             else
             {
-
-                foreach (var r in rules)
+                string newStringRule = "";
+                foreach (var ch in rule)
                 {
-                    newStringRule.Replace(r.Key.ToString(), r.Value.ToString());
+                    if (rules.ContainsKey(ch.ToString()))
+                    {
+                        newStringRule +=rules[ch.ToString()];
+                    }
+                    else
+                    {
+                        newStringRule += ch;
+                    }
                 }
 
                 counter++;
-                return BuildStringWithRules(counter,newStringRule);
+                return BuildStringWithRules(counter, newStringRule);
             }
         }
 
@@ -114,8 +121,8 @@ namespace Curves
             }
 
             int currentAngle = 0;
-            float halfWight = (p.Width/ 2)+size+(stepF*size/step);
-            float halfHeight = (p.Height / 2)-size-(stepF*size/step);
+            float halfWight = (p.Width/ 2);
+            float halfHeight = (p.Height / 2);
             float a = halfWight;
             float b = halfHeight;
             using (var g = Graphics.FromImage(p.Image))
