@@ -87,9 +87,8 @@ namespace Curves
                             g.DrawLine(color, new PointF(a, b), new PointF(nexta, nextb));
                             //RotateLine(g, a, b, angle, color);
 
-                            a += size * MathF.Cos(angleRadian);
-                            b += size * MathF.Sin(angleRadian);
-
+                            a += nexta;
+                            b += nexta;
 
                         }
                         else if (rule == '+')
@@ -108,7 +107,7 @@ namespace Curves
                 p.Refresh();
             }
         }
-        public void DrawGraphicsFromRule(PictureBox p, int size, string rules)
+        public void DrawGraphicsFromRule(PictureBox p, int size, string rules,int imageAngle)
         {
             int stepF = 0;
             if (step > 2)
@@ -129,7 +128,7 @@ namespace Curves
             {
                 using (Matrix m = new Matrix())
                 {
-                    m.RotateAt(180, new PointF(a, b));
+                    m.RotateAt(imageAngle, new PointF(a, b));
                     
                     g.Transform = m;
 
@@ -149,6 +148,20 @@ namespace Curves
                             a += size * MathF.Cos(angleRadian);
                             b += size * MathF.Sin(angleRadian);
 
+
+                        }
+                        else if (rule == 'G')
+                        {
+                            float angleRadian = currentAngle * MathF.PI / 180;
+                            float nexta =
+                                MathF.Round(a + (size+4) * MathF.Cos(angleRadian));
+                            float nextb =
+                                MathF.Round(b + (size+4) * MathF.Sin(angleRadian));
+                            g.DrawLine(color, new PointF(a, b), new PointF(nexta, nextb));
+                            //RotateLine(g, a, b, angle, color);
+
+                            a += size * MathF.Cos(angleRadian);
+                            b += size * MathF.Sin(angleRadian);
 
                         }
                         else if (rule == '+')

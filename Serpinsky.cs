@@ -22,11 +22,11 @@ namespace Curves
         public void ConstructSerpinskyCurve()
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("X", "XF+G+XF−−F−−XF+G+X");
-            LSystem l = new LSystem("F−−XF−−F−−XF", steps, 90, d);
-            string rules = l.BuildStringWithRules(0, "F−−XF−−F−−XF");
+            d.Add("X", "XF+F+XF--F--XF+F+X");
+            LSystem l = new LSystem("F--XF--F--XF", steps, 45, d);
+            string rules = l.BuildStringWithRules(0, "F--XF--F--XF");
 
-            l.DrawGraphicsFromRule(p, size, rules);
+            l.DrawGraphicsFromRule(p, size, rules,45);
             //l.DrawGraphicsFromRule(p,size, "-+AF-BFB-FA+F+-BF+AFA+FB-F-BF+AFA+FB-+F+AF-BFB-FA+");
         }
     }

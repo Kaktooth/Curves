@@ -27,7 +27,7 @@ namespace Curves
             d.Add("X", "-YF+XFX+FY-");
             LSystem l = new LSystem("X", steps, 90, d);
             string rules = l.BuildStringWithRules(0,"X");
-            l.DrawGraphicsFromRule(p, size,rules);
+            l.DrawGraphicsFromRule(p, size,rules,180);
             //l.DrawGraphicsFromRule(p,size, "-+AF-BFB-FA+F+-BF+AFA+FB-F-BF+AFA+FB-+F+AF-BFB-FA+");
         }
     }

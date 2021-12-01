@@ -17,8 +17,8 @@ namespace Curves
 
         private void button2_Click(object sender, System.EventArgs e)
         {
-            HilbertCurve hilbert = new HilbertCurve();
-            hilbert.Show();
+            SerpinskyCurve serpinsky = new SerpinskyCurve();
+            serpinsky.Show();
         }
     }
 }
