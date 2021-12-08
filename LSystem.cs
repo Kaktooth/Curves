@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Curves
@@ -28,12 +26,12 @@ namespace Curves
             this.stringRule = startRule;
         }
 
-        public string BuildStringWithRules(int counter,string rule)
+        public string BuildStringWithRules(int counter, string rule)
         {
-            
+
             if (counter == step)
             {
-                
+
                 return rule;
             }
             else
@@ -43,7 +41,7 @@ namespace Curves
                 {
                     if (rules.ContainsKey(ch.ToString()))
                     {
-                        newStringRule +=rules[ch.ToString()];
+                        newStringRule += rules[ch.ToString()];
                     }
                     else
                     {
@@ -99,7 +97,7 @@ namespace Curves
                         {
                             currentAngle -= angle;
                         }
-                        
+
                     }
                     g.ResetTransform();
                 }
@@ -107,20 +105,11 @@ namespace Curves
                 p.Refresh();
             }
         }
-        public void DrawGraphicsFromRule(PictureBox p, int size, string rules,int imageAngle)
+        public void DrawGraphicsFromRule(PictureBox p, int size, string rules, int imageAngle)
         {
-            int stepF = 0;
-            if (step > 2)
-            {
-                stepF = Factorial(step - 1);
-            }
-            else
-            {
-                stepF = Factorial(step);
-            }
 
             int currentAngle = 0;
-            float halfWight = (p.Width/ 2);
+            float halfWight = (p.Width / 2);
             float halfHeight = (p.Height / 2);
             float a = halfWight;
             float b = halfHeight;
@@ -129,7 +118,7 @@ namespace Curves
                 using (Matrix m = new Matrix())
                 {
                     m.RotateAt(imageAngle, new PointF(a, b));
-                    
+
                     g.Transform = m;
 
                     g.Clear(Color.White);
@@ -154,9 +143,9 @@ namespace Curves
                         {
                             float angleRadian = currentAngle * MathF.PI / 180;
                             float nexta =
-                                MathF.Round(a + (size+4) * MathF.Cos(angleRadian));
+                                MathF.Round(a + (size + 4) * MathF.Cos(angleRadian));
                             float nextb =
-                                MathF.Round(b + (size+4) * MathF.Sin(angleRadian));
+                                MathF.Round(b + (size + 4) * MathF.Sin(angleRadian));
                             g.DrawLine(color, new PointF(a, b), new PointF(nexta, nextb));
                             //RotateLine(g, a, b, angle, color);
 
@@ -175,9 +164,9 @@ namespace Curves
 
                     }
                     g.ResetTransform();
-                    
+
                 }
-               
+
                 p.Refresh();
             }
         }

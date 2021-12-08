@@ -20,5 +20,11 @@ namespace Curves
             SerpinskyCurve serpinsky = new SerpinskyCurve();
             serpinsky.Show();
         }
+
+        private void button3_Click(object sender, System.EventArgs e)
+        {
+            WCurve wCurve = new WCurve();
+            wCurve.Show();
+        }
     }
 }
